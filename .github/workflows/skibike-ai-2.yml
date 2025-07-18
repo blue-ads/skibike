@@ -1,0 +1,33 @@
+name: Build and Deploy Vite App
+
+on:
+  push:
+    branches:
+      - skibike-ai-2 # Der Branch, bei dem der Workflow ausgelöst werden soll
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # Das Betriebssystem, auf dem der Job ausgeführt wird
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4 # Holt den Code aus deinem Repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Die Node.js-Version, die du verwenden möchtest
+
+      - name: Install Dependencies
+        run: npm install
+        working-directory: skibike # ✅ Korrigierter Pfad!
+
+      - name: Build Project
+        run: npm run build
+        working-directory: skibike # ✅ Korrigierter Pfad!
+
+      - name: Archive Production Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-folder
+          path: skibike/dist # ✅ Korrigierter Pfad!
