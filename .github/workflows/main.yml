@@ -20,12 +20,12 @@ jobs:
 
       - name: Install Dependencies
         run: npm install # Installiert die Projektabhängigkeiten
-
+        working-directory: skibike
       - name: Build Project
         run: npm run build # Führt den Build-Befehl aus, um den 'dist'-Ordner zu erstellen
-
+        working-directory: skibike
       - name: Archive Production Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-folder
-          path: dist # Lädt den 'dist'-Ordner als Artefakt hoch
+          path: skibike/dist # Lädt den 'dist'-Ordner als Artefakt hoch
