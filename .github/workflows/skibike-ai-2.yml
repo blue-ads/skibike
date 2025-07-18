@@ -3,7 +3,7 @@ name: Build and Deploy Vite App
 on:
   push:
     branches:
-      - main # Der Branch, bei dem der Workflow ausgelöst werden soll
+      - skibike-ai-2 # Der Branch, bei dem der Workflow ausgelöst werden soll
 
 jobs:
   build-and-deploy:
