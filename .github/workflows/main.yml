@@ -20,14 +20,14 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-        working-directory: skibike # ✅ Korrigierter Pfad!
+        working-directory: sb1-4v7p5x7d-main/sb1-4v7p5x7d-main # ✅ Korrigierter Pfad!
 
       - name: Build Project
         run: npm run build
-        working-directory: skibike # ✅ Korrigierter Pfad!
+        working-directory: sb1-4v7p5x7d-main/sb1-4v7p5x7d-main # ✅ Korrigierter Pfad!
 
       - name: Archive Production Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-folder
-          path: skibike/dist # ✅ Korrigierter Pfad!
+          path: sb1-4v7p5x7d-main/sb1-4v7p5x7d-main/dist # ✅ Korrigierter Pfad!
