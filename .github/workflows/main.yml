@@ -19,13 +19,15 @@ jobs:
           node-version: '20' # Die Node.js-Version, die du verwenden möchtest
 
       - name: Install Dependencies
-        run: npm install # Installiert die Projektabhängigkeiten
-        working-directory: skibike
+        run: npm install
+        working-directory: skibike # ✅ Korrigierter Pfad!
+
       - name: Build Project
-        run: npm run build # Führt den Build-Befehl aus, um den 'dist'-Ordner zu erstellen
-        working-directory: skibike
+        run: npm run build
+        working-directory: skibike # ✅ Korrigierter Pfad!
+
       - name: Archive Production Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-folder
-          path: skibike/dist # Lädt den 'dist'-Ordner als Artefakt hoch
+          path: skibike/dist # ✅ Korrigierter Pfad!
