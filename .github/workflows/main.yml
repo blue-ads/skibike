@@ -1,0 +1,31 @@
+name: Build and Deploy Vite App
+
+on:
+  push:
+    branches:
+      - main # Der Branch, bei dem der Workflow ausgelöst werden soll
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # Das Betriebssystem, auf dem der Job ausgeführt wird
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4 # Holt den Code aus deinem Repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Die Node.js-Version, die du verwenden möchtest
+
+      - name: Install Dependencies
+        run: npm install # Installiert die Projektabhängigkeiten
+
+      - name: Build Project
+        run: npm run build # Führt den Build-Befehl aus, um den 'dist'-Ordner zu erstellen
+
+      - name: Archive Production Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-folder
+          path: dist # Lädt den 'dist'-Ordner als Artefakt hoch
